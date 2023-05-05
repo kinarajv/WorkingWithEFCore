@@ -25,8 +25,9 @@ namespace ProgramEFCore
 				Console.WriteLine("4) Adding a Category");
 				Console.WriteLine("5) Adding a Product");
 				Console.WriteLine("6) Updating a Product");
-				Console.WriteLine("7) Deleting a Product");
-				Console.WriteLine("8) Deleting a Category");
+				Console.WriteLine("7) Deleting a Category");
+				Console.WriteLine("8) Deleting a Product");
+				
 				Console.WriteLine("X) Exit");
 				Console.Write("Enter a command: ");
 				input = GetInput();
@@ -51,10 +52,10 @@ namespace ProgramEFCore
 					case "6":
 						UpdateProduct();
 						break;
-					case "8":
+					case "7":
 						DeleteCategory();
 						break;
-					case "9":
+					case "8":
 						DeleteProduct();
 						break;
 					case "x":

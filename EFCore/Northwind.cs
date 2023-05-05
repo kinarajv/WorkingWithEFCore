@@ -28,5 +28,9 @@ public class Northwind : DbContext
 			.Property(p => p.Cost)
 			.HasConversion<double>();
 		}
+		modelBuilder.Entity<Product>()
+			.HasOne(p => p.Category)
+			.WithMany(c => c.Products)
+			.OnDelete(DeleteBehavior.Cascade);
 	}
 }
