@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KuPP+tf7a+JIqVopGbRegWDwe/E5vAy2OkLJieqwd6JxA3unoLV6atJHVfud0jiZcr7drfG5ODSaxNlRwn+KAQ==",
+  "dgSpecHash": "PYO5yR/ALg4fv1USYhi5aAYR05FPfSgfC2yxTUWccLm52x7+3W+aSDZf5HM8VKyyjB2TUHZwGAYS8O/AOqqhMg==",
   "success": true,
-  "projectFilePath": "C:\\C#\\WorkingWithEFCore\\EFCore\\EFCore.csproj",
+  "projectFilePath": "c:\\C#\\WorkingWithEFCore\\EFCore\\EFCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kinar\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\kinar\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.5\\microsoft.data.sqlite.core.7.0.5.nupkg.sha512",
