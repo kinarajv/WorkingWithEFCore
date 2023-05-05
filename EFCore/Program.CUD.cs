@@ -34,7 +34,7 @@ namespace ProgramEFCore
                 SectionTitle("Deleting a Category");
 
                 Printer("Enter the category ID: ");
-                string input = GetInput();
+                string? input = GetInput();
                 int id = int.Parse(input);
 
                 Category? category = db.Categories?.Find(id);
