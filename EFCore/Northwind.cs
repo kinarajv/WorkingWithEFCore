@@ -33,4 +33,4 @@ public class Northwind : DbContext
 			.WithMany(c => c.Products)
 			.OnDelete(DeleteBehavior.Cascade);
 	}
-}
+}  
