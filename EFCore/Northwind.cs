@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Sqlite;
 using System.IO;
 
 namespace EFCore;
-public class Northwind : DbContext
+public  class Northwind: DbContext
 {
 	private string path = String.Empty;
 	public DbSet<Product>? Products { get; set; }
@@ -22,15 +22,15 @@ public class Northwind : DbContext
 			.Property(c => c.CategoryName)
 			.IsRequired()
 			.HasMaxLength(15);
+
+		modelBuilder.Entity<Category>()
+		.HasKey(c => c.CategoryId);
+		
 		if (Database.ProviderName?.Contains("Sqlite") ?? false)
 		{
 			modelBuilder.Entity<Product>()
 			.Property(p => p.Cost)
 			.HasConversion<double>();
 		}
-		modelBuilder.Entity<Product>()
-			.HasOne(p => p.Category)
-			.WithMany(c => c.Products)
-			.OnDelete(DeleteBehavior.Cascade);
 	}
 }  

@@ -27,30 +27,6 @@ namespace ProgramEFCore
 			}
 		}
 
-		static void DeleteCategory()
-		{
-			using (Northwind db = new())
-			{
-				SectionTitle("Deleting a Category");
-
-				Printer("Enter the category ID: ");
-				string? input = GetInput();
-				int id = int.Parse(input);
-
-				Category? category = db.Categories?.Find(id);
-
-				if (category is null)
-				{
-					Fail("Category not found.");
-					return;
-				}
-
-				db.Categories?.Remove(category);
-				db.SaveChanges();
-
-				Info("Category deleted successfully.");
-			}
-		}
 
 		static void AddProduct()
 		{
@@ -144,31 +120,31 @@ namespace ProgramEFCore
 			}
 		}
 
-		static void DeleteProduct()
+		static void DeleteProducts()
 		{
 			using (Northwind db = new())
 			{
-				SectionTitle("Deleting a Product");
+				SectionTitle("Delete a Product");
 
-				Printer("Enter the product ID: ");
+				Printer("Enter the product name: ");
 				string input = GetInput();
-				int id = int.Parse(input);
-
-				Product? product = db.Products?.Find(id);
-
-				if (product is null)
+				
+				IQueryable<Product>? products = db.Products?.Where(
+				p => p.ProductName.StartsWith(input));
+				
+				if ((products is null) || (!products.Any()))
 				{
-					Fail("Product not found.");
+					Fail("No products found to delete.");
 					return;
 				}
-				if (product.Category is not null)
+				else
 				{
-					product.Category.Products.Remove(product);
+					if (db.Products is null)
+						Fail ("Product is null");
+					db.Products.RemoveRange(products);
 				}
-				db.Products?.Remove(product);
 				db.SaveChanges();
-
-				Info("Product deleted successfully.");
+				
 			}
 		}
 	}

@@ -18,7 +18,7 @@ partial class Program
                 Fail("No Categories Found");
                 return;
             }
-            Info($"ToQueryString: {categories.ToQueryString()}");
+            Info($"ToQueryString: {categories.ToQueryString()}"); //Print SQL command
             foreach (Category? c in categories)
             {
                 Printer($"Category: {c.CategoryName} has {c.Products.Count} products.");

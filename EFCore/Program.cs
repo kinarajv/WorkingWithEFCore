@@ -25,8 +25,7 @@ namespace ProgramEFCore
 				Console.WriteLine("4) Adding a Category");
 				Console.WriteLine("5) Adding a Product");
 				Console.WriteLine("6) Updating a Product");
-				Console.WriteLine("7) Deleting a Category");
-				Console.WriteLine("8) Deleting a Product");
+				Console.WriteLine("7) Deleting a Product");
 				
 				Console.WriteLine("X) Exit");
 				Console.Write("Enter a command: ");
@@ -53,10 +52,7 @@ namespace ProgramEFCore
 						UpdateProduct();
 						break;
 					case "7":
-						DeleteCategory();
-						break;
-					case "8":
-						DeleteProduct();
+						DeleteProducts();
 						break;
 					case "x":
 						isValidInput = true;
