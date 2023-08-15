@@ -10,7 +10,7 @@ public class Product
 
 	[Required]
 	[StringLength(40)]
-	public string ProductName { get; set; } = null!;
+	public string ProductName { get; set; } = null!; //Non nullable 
 
 	[Column("UnitPrice", TypeName = "money")]
 	public decimal? Cost { get; set; }
@@ -21,5 +21,5 @@ public class Product
 	public bool Discontinued { get; set; }
 
 	public int CategoryId { get; set; }
-	public virtual Category Category { get; set; } = null!;
+	public virtual Category Category { get; set; } = null! ;
 }

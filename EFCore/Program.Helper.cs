@@ -35,8 +35,13 @@ partial class Program
 		Console.WriteLine($"{message}");
 		Console.ForegroundColor = previousColor;
 	}
-	static string? GetInput()
+	static string GetInput()
 	{
-		return Console.ReadLine();
+		string input;
+		do
+		{
+			input = Console.ReadLine();
+		} while (input == null);
+		return input;
 	}
 }

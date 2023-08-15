@@ -18,19 +18,21 @@ public  class Northwind: DbContext
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
+		// Already declared in Category.cs 
 		modelBuilder.Entity<Category>()
-			.Property(c => c.CategoryName)
-			.IsRequired()
-			.HasMaxLength(15);
+					.Property(c => c.CategoryName)
+					.IsRequired()
+					.HasMaxLength(15);
 
 		modelBuilder.Entity<Category>()
-		.HasKey(c => c.CategoryId);
-		
+					.Property(c => c.CategoryId)
+					.HasMaxLength(6);
+					
 		if (Database.ProviderName?.Contains("Sqlite") ?? false)
 		{
 			modelBuilder.Entity<Product>()
-			.Property(p => p.Cost)
-			.HasConversion<double>();
+						.Property(p => p.Cost)
+						.HasConversion<double>();
 		}
 	}
 }  

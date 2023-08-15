@@ -12,14 +12,15 @@ namespace ProgramEFCore
 			{
 				SectionTitle("Adding a Category");
 
-				Printer("Enter the category name: ");
-				string name = GetInput();
-
+				Printer("Enter the category name : ");
+				string? name = GetInput();
+				Printer("Enter the category description : ");
+				string? desc = GetInput();
 				Category category = new Category
 				{
-					CategoryName = name
+					CategoryName = name,
+					Description = desc,
 				};
-
 				db.Categories?.Add(category);
 				db.SaveChanges();
 
@@ -35,19 +36,19 @@ namespace ProgramEFCore
 				SectionTitle("Adding a Product");
 
 				Printer("Enter the product name: ");
-				string name = GetInput();
+				string? name = GetInput();
 
 				Printer("Enter the product price: ");
-				string input = GetInput();
-				decimal price = decimal.Parse(input);
+				string? input = GetInput();
+				decimal.TryParse(input, out decimal price);
 
 				Printer("Enter the product stock level: ");
 				input = GetInput();
-				short stock = short.Parse(input);
+				short.TryParse(input, out short stock);
 
 				Printer("Enter the category ID: ");
 				input = GetInput();
-				int categoryId = int.Parse(input);
+				int.TryParse(input, out int categoryId);
 
 				Product product = new Product
 				{
@@ -71,8 +72,8 @@ namespace ProgramEFCore
 				SectionTitle("Updating a Product");
 
 				Printer("Enter the product ID: ");
-				string input = GetInput();
-				int id = int.Parse(input);
+				string? input = GetInput();
+				int.TryParse(input, out int id);
 
 				Product? product = db.Products?.Find(id);
 
@@ -129,22 +130,25 @@ namespace ProgramEFCore
 				Printer("Enter the product name: ");
 				string input = GetInput();
 				
-				IQueryable<Product>? products = db.Products?.Where(
-				p => p.ProductName.StartsWith(input));
+				IQueryable<Product>? products = db.Products?
+												.Where(p => p.ProductName
+												.StartsWith(input));
 				
 				if ((products is null) || (!products.Any()))
 				{
 					Fail("No products found to delete.");
 					return;
 				}
+				else if (db.Products is null)
+				{
+					Fail ("Product is null");
+					return;
+				}	
 				else
 				{
-					if (db.Products is null)
-						Fail ("Product is null");
 					db.Products.RemoveRange(products);
+					db.SaveChanges();
 				}
-				db.SaveChanges();
-				
 			}
 		}
 	}
