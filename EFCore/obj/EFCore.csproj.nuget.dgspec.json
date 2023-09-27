@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\C#\\WorkingWithEFCore\\EFCore\\EFCore.csproj": {}
+    "C:\\CSharp\\WorkingWithEFCore\\EFCore\\EFCore.csproj": {}
   },
   "projects": {
-    "c:\\C#\\WorkingWithEFCore\\EFCore\\EFCore.csproj": {
+    "C:\\CSharp\\WorkingWithEFCore\\EFCore\\EFCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\C#\\WorkingWithEFCore\\EFCore\\EFCore.csproj",
+        "projectUniqueName": "C:\\CSharp\\WorkingWithEFCore\\EFCore\\EFCore.csproj",
         "projectName": "EFCore",
-        "projectPath": "c:\\C#\\WorkingWithEFCore\\EFCore\\EFCore.csproj",
+        "projectPath": "C:\\CSharp\\WorkingWithEFCore\\EFCore\\EFCore.csproj",
         "packagesPath": "C:\\Users\\kinar\\.nuget\\packages\\",
-        "outputPath": "c:\\C#\\WorkingWithEFCore\\EFCore\\obj\\",
+        "outputPath": "C:\\CSharp\\WorkingWithEFCore\\EFCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\kinar\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -40,17 +40,15 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.5, )"
+              "version": "[7.0.11, )"
             },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
+            "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
-              "version": "[7.0.10, )"
+              "version": "[7.0.11, )"
             },
-            "Microsoft.EntityFrameworkCore.SQLite": {
+            "Microsoft.EntityFrameworkCore.Tools.DotNet": {
               "target": "Package",
-              "version": "[7.0.5, )"
+              "version": "[2.0.3, )"
             }
           },
           "imports": [

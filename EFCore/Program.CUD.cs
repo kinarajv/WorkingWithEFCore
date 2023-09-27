@@ -27,6 +27,26 @@ namespace ProgramEFCore
 				Info("Category added successfully.");
 			}
 		}
+		
+		static void AddLocation()
+		{
+			using (Northwind db = new())
+			{
+				SectionTitle("Adding a Category");
+
+				Printer("Enter the Location name : ");
+				string? name = GetInput();
+				Location location = new Location
+				{
+					LocationName = name
+				};
+				db.Locations?.Add(location);
+				db.SaveChanges();
+
+				Info("Category added successfully.");
+			}
+		}
+
 
 
 		static void AddProduct()
@@ -115,12 +135,20 @@ namespace ProgramEFCore
 					product.CategoryId = int.Parse(input);
 				}
 
+				Printer("Enter the new location ID (leave empty to keep the existing category): ");
+				input = GetInput();
+
+				if (!string.IsNullOrEmpty(input))
+				{
+					product.LocationId = int.Parse(input);
+				}
+
 				db.SaveChanges();
 
 				Info("Product updated successfully.");
 			}
 		}
-
+		
 		static void DeleteProducts()
 		{
 			using (Northwind db = new())
@@ -131,8 +159,7 @@ namespace ProgramEFCore
 				string input = GetInput();
 				
 				IQueryable<Product>? products = db.Products?
-												.Where(p => p.ProductName
-												.StartsWith(input));
+												.Where(p => p.ProductName.StartsWith(input));
 				
 				if ((products is null) || (!products.Any()))
 				{

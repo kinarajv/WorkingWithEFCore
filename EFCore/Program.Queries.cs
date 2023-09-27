@@ -76,9 +76,9 @@ partial class Program
 				input = GetInput();
 			} while (!decimal.TryParse(input, out price));
 
-			IQueryable<Product>? products = db.Products?
-											.Where(product => product.Cost > price)
-											.OrderByDescending(product => product.Cost);
+			var products = db.Products?
+							.Where(product => product.Cost > price)
+							.OrderByDescending(product => product.Cost);
 
 			if ((products is null) || (!products.Any()))
 			{
@@ -89,6 +89,33 @@ partial class Program
 			foreach (Product p in products)
 			{
 				Printer($"{p.ProductId}: {p.ProductName} costs {p.Cost:$#,##0.00} and has {p.Stock} in stock.");
+			}
+		}
+	}
+
+	static void ShowProductByLocation()
+	{
+		using (Northwind db = new())
+		{
+			Printer("Enter the location name: ");
+			string input = GetInput();
+
+            Location? location = db.Locations?.FirstOrDefault(d => d.LocationName == input);
+			if (location == null)
+			{
+				Printer("Not found");
+				return;
+			}
+            IQueryable<Product>? products = db.Products?.Where(d => d.LocationId == location.LocationId);
+			if (products == null)
+			{
+				Printer("Not found");
+				return;
+			}
+			Printer($"Here is location of {location.LocationName}");
+			foreach (var x in products)
+			{
+				Printer($"{x.ProductId}: {x.ProductName} costs {x.Cost:$#,##0.00} and has {x.Stock} in stock.");
 			}
 		}
 	}

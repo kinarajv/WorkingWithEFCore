@@ -26,6 +26,8 @@ namespace ProgramEFCore
 				Console.WriteLine("5) Adding a Product");
 				Console.WriteLine("6) Updating a Product");
 				Console.WriteLine("7) Deleting a Product");
+				Console.WriteLine("8) Add a Location");
+				Console.WriteLine("9) Show loc");
 				
 				Console.WriteLine("X) Exit");
 				Console.Write("Enter a command: ");
@@ -53,6 +55,12 @@ namespace ProgramEFCore
 						break;
 					case "7":
 						DeleteProducts();
+						break;
+					case "8":
+						AddLocation();
+						break;
+					case "9" :
+						ShowProductByLocation();
 						break;
 					case "x":
 						isValidInput = true;

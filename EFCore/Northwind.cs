@@ -8,7 +8,7 @@ public  class Northwind: DbContext
 	private string path = String.Empty;
 	public DbSet<Product>? Products { get; set; }
 	public DbSet<Category>? Categories { get; set; }
-
+	public DbSet<Location>? Locations { get; set; }
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 	{
 		path = Path.Combine(Environment.CurrentDirectory, "Northwind.db");
@@ -18,7 +18,6 @@ public  class Northwind: DbContext
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
-		// Already declared in Category.cs 
 		modelBuilder.Entity<Category>()
 					.Property(c => c.CategoryName)
 					.IsRequired()
